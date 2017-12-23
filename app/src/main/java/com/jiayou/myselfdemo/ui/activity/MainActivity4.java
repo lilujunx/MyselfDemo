@@ -90,7 +90,7 @@ public class MainActivity4 extends BaseRefreshActivity {
 
     @Override
     public void initOthers() {
-        setTitleCenter("哈哈哈哈");
+        setTitleCenter("哈哈哈哈164894");
         setTitleLeft(R.mipmap.ic_launcher, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
