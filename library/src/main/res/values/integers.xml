@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--加载框动画的执行时间-->
+  <integer name="svanimation_default_duration">300</integer>
+</resources>

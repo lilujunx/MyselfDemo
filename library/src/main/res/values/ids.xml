@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--banner-->
+    <item name="bannerContainer" type="id"/>
+    <item name="bannerViewPager" type="id"/>
+    <item name="circleIndicator" type="id"/>
+    <item name="numIndicator" type="id"/>
+    <item name="titleView" type="id"/>
+    <item name="bannerTitle" type="id"/>
+    <item name="numIndicatorInside" type="id"/>
+    <item name="indicatorInside" type="id"/>
+    <item name="bannerDefaultImage" type="id"/>
+
+<!--   加载布局   -->
+    <item name="empty_image" type="id"/>
+    <item name="empty_text" type="id"/>
+    <item name="error_image" type="id"/>
+    <item name="error_text" type="id"/>
+    <item name="retry_button" type="id"/>
+</resources>

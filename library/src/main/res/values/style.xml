@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ***********   base   *****************  -->
+    <!--    权重base  横向 -->
+    <style name="base_weight">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
+    <!--动态计算图片宽高-->
+    <declare-styleable name="RatioLayout">
+        <attr name="relative" format="enum">
+            <enum name="width" value="0"></enum>
+            <enum name="height" value="1"></enum>
+        </attr>
+        <attr name="picRatio" format="float"></attr>
+    </declare-styleable>
+
+
+    <!--加载框的样式-->
+    <declare-styleable name="SVCircleProgressBar">
+        <attr name="svprogress_roundColor" format="color"/>
+        <attr name="svprogress_roundProgressColor" format="color"/>
+        <attr name="svprogress_roundWidth" format="dimension"></attr>
+        <attr name="svprogress_max" format="integer"></attr>
+        <attr name="svprogress_style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+
+    <!--加载布局的样式-->
+    <style name="LoadingLayout"/>
+
+    <style name="LoadingLayout.Style">
+        <item name="llEmptyResId">@layout/_loading_layout_empty</item>
+        <item name="llLoadingResId">@layout/_loading_layout_loading</item>
+        <item name="llErrorResId">@layout/_loading_layout_error</item>
+        <item name="llTextColor">#e79191</item>
+        <item name="llTextSize">20sp</item>
+        <item name="llButtonTextColor">#41ded6</item>
+        <item name="llButtonTextSize">20sp</item>
+        <item name="llButtonBackground">@drawable/_loading_layout_button</item>
+        <item name="llEmptyImage">@drawable/empty</item>
+        <item name="llEmptyText">暂无数据</item>
+        <item name="llErrorImage">@drawable/error</item>
+        <item name="llErrorText">请检查您的网络</item>
+        <item name="llRetryText">加载失败，点击重试</item>
+    </style>
+
+    <declare-styleable name="LoadingLayout">
+        <!-- 空布局资源id -->
+        <attr name="llEmptyResId" format="reference"/>
+        <!-- 加载中布局资源id -->
+        <attr name="llLoadingResId" format="reference"/>
+        <!-- 错误布局资源id -->
+        <attr name="llErrorResId" format="reference"/>
+        <!-- 空布局图片 -->
+        <attr name="llEmptyImage" format="reference"/>
+        <!-- 空布局文本 -->
+        <attr name="llEmptyText" format="string"/>
+        <!-- 错误布局图片 -->
+        <attr name="llErrorImage" format="reference"/>
+        <!-- 错误布局文本 -->
+        <attr name="llErrorText" format="string"/>
+        <!-- 错误布局重试按钮文本 -->
+        <attr name="llRetryText" format="string"/>
+        <!-- 文本颜色 -->
+        <attr name="llTextColor" format="color"/>
+        <!-- 文本尺寸 -->
+        <attr name="llTextSize" format="dimension"/>
+        <!-- 按钮文本颜色 -->
+        <attr name="llButtonTextColor" format="color"/>
+        <!-- 按钮文本尺寸 -->
+        <attr name="llButtonTextSize" format="dimension"/>
+        <!-- 按钮背景 -->
+        <attr name="llButtonBackground" format="reference"/>
+    </declare-styleable>
+
+
+    <!--  呃。。。。-->
+    <style name="AddressStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.InputMethod</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+
+    <!-- ******************   首页相关   ********************** -->
+    <!--    导航条单选按钮    -->
+
+
+    <style name="main_bottom_rb" parent="base_weight">
+        <item name="android:button">@null</item>
+        <item name="android:background">@color/white</item>
+    </style>
+</resources>

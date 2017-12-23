@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--左标题-->
+    <item name="title_left" type="id"/>
+    <!--左标题的点击-->
+    <item name="ll_title_left" type="id"/>
+    <!--中间展示-->
+    <item name="title_center" type="id"/>
+    <!--右标题-->
+    <item name="title_right" type="id"/>
+    <!--右标题点击-->
+    <item name="ll_title_right" type="id"/>
+    <!--右标题有两个的话的右边-->
+    <item name="title_right_right" type="id"/>
+    <!--右标题有两个的话的右边的点击-->
+    <item name="ll_title_right_right" type="id"/>
+
+
+    <item name="content_main" type="id"/>
+
+    <item name="imageRv_image" type="id"/>
+    <item name="imageRv_cb" type="id"/>
+</resources>

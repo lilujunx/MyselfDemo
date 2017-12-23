@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_title"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/app_style"
+    android:paddingTop="23dp"
+    >
+
+    <LinearLayout
+        android:id="@id/ll_title_left"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <Button
+            android:id="@id/title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@null"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:scaleType="center"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@id/title_center"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="大概是标题"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:id="@id/ll_title_right_right"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        >
+
+        <Button
+            android:id="@id/title_right_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/ll_title_right"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+
+        android:layout_toLeftOf="@id/ll_title_right_right">
+
+        <Button
+            android:id="@id/title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:gravity="center"
+
+            android:textColor="#fff"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+</RelativeLayout>

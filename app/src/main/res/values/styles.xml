@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="LoadingLayout.Style">
+        <item name="llEmptyResId">@layout/_loading_layout_empty</item>
+        <item name="llLoadingResId">@layout/_loading_layout_loading</item>
+        <item name="llErrorResId">@layout/_loading_layout_error</item>
+        <item name="llTextColor">#e79191</item>
+        <item name="llTextSize">10sp</item>
+        <item name="llButtonTextColor">#41ded6</item>
+        <item name="llButtonTextSize">10sp</item>
+        <item name="llButtonBackground">@drawable/_loading_layout_button</item>
+        <item name="llEmptyImage">@drawable/empty</item>
+        <item name="llEmptyText">一大波傻白正在靠近中</item>
+        <item name="llErrorImage">@drawable/error</item>
+        <item name="llErrorText">请检查您的网络</item>
+        <item name="llRetryText">重新寻找傻白</item>
+    </style>
+
+
+</resources>
