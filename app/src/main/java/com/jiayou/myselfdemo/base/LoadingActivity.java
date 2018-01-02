@@ -12,8 +12,6 @@ import com.jiayou.myselfdemo.R;
  */
 
 public abstract class LoadingActivity extends GBaseActivity {
-
-
     private View test;
     private View root;
 

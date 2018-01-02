@@ -19,7 +19,6 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import butterknife.BindView;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by Malik J on 2017/12/7.
@@ -52,8 +51,6 @@ public abstract class BaseRefreshActivity extends BaseActivity implements OnRefr
     public static final int orientation_vertical = 1;  //纵向
     public static final int orientation_horizontal = 2;  //横向
     public static final int orientation_random = 3;   //瀑布流
-    private SweetAlertDialog mSweetAlertDialog;
-
 
 
     @Override
@@ -131,12 +128,12 @@ public abstract class BaseRefreshActivity extends BaseActivity implements OnRefr
     public abstract EasyRecyclerViewAdapter initAdapter();
 
     /**
-     * 下拉刷新
+     * 下拉刷新,重置page=1，默认limit=20，可修改
      */
     public abstract void doRefresh(RefreshLayout refreshlayout, EasyRecyclerViewAdapter mEasyRecyclerViewAdapter);
 
     /**
-     * 上推加载
+     * 上推加载, page 已 + 1，默认limit=20，可修改
      */
     public abstract void doLoadMore(RefreshLayout refreshlayout, EasyRecyclerViewAdapter mEasyRecyclerViewAdapter);
 

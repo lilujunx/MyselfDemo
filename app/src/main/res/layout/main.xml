@@ -14,5 +14,11 @@
         android:onClick="doNet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ahahaha"/>
+        android:text="WX"/>
+
+    <Button
+        android:onClick="doNet1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ZFB"/>
 </LinearLayout>

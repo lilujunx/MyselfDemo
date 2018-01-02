@@ -17,7 +17,7 @@ import static com.myself.library.base.BaseApp.mContextGlobal;
 
 
 /**
- * Created by Malik J on 2017/10/16.
+ * 网络访问，回调
  */
 
 public class MyCallBack implements Callback {
