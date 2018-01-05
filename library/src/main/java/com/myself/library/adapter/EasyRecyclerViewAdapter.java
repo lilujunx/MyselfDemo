@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -84,8 +83,16 @@ public abstract class EasyRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
 
-    public void remove(Object o) {
-        this.mList.remove(o);
+//    public void remove(Object o) {
+//        this.mList.remove(o);
+//    }
+
+    public void remove(int pos) {
+        this.mList.remove(pos);
+//        notifyDataSetChanged();
+//        notifyItemRangeChanged(pos,mList.size());
+//        notifyItemRemoved(pos);
+        notifyItemChanged(pos);
     }
 
 

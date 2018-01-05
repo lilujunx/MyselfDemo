@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 
 
 /**
- * Created by Sai on 15/8/15.
+ *
  */
 public class SVProgressHUD {
     private WeakReference<Context> contextWeak;

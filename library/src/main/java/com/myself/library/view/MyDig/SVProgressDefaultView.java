@@ -14,8 +14,8 @@ import com.myself.library.R;
 
 
 /**
- * Created by Sai on 15/8/15.
- * 默认的SVProgress效果
+ *
+ *
  */
 public class SVProgressDefaultView extends LinearLayout {
     private int resBigLoading = R.drawable.ic_svstatus_loading;

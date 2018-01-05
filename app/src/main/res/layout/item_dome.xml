@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.myself.library.view.love.PeriscopeLayout
+        android:id="@+id/perLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="xxxxx"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/tv_del"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="go"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:background="@color/gray"
-            android:layout_height="4dp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="xxxxx"/>
+
+            <Button
+                android:id="@+id/tv_del"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="go"/>
+
+
+            <Button
+                android:id="@+id/tv_good"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="点赞"/>
+        </LinearLayout>
+    </com.myself.library.view.love.PeriscopeLayout>
+
 </LinearLayout>

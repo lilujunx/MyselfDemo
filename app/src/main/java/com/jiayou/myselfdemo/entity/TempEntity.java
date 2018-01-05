@@ -3,7 +3,7 @@ package com.jiayou.myselfdemo.entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Malik J on 2017/12/1.
+ *
  */
 
 public class TempEntity {

@@ -13,7 +13,7 @@ import com.myself.library.R;
 
 
 /**
- * Created by Sai on 15/9/1.
+ *
  */
 public class SVCircleProgressBar extends View {
     /**

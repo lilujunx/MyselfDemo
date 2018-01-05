@@ -1,7 +1,7 @@
 package com.jiayou.myselfdemo.ui.activity;
 
 import android.os.Handler;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,22 +12,22 @@ import com.myself.library.base.BaseRefreshActivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity4 extends BaseRefreshActivity {
-    private List<String> mEntity = new ArrayList<>();
+    private ArrayList<String> mEntity = new ArrayList<>();
     private DemoAdapter mDemoAdapter;
 
 
     @Override
     public boolean needFooter() {
-        return true;
+        return false;
     }
 
 
     @Override
     public EasyRecyclerViewAdapter initAdapter() {
-        mDemoAdapter = new DemoAdapter();
+        mDemoAdapter = new DemoAdapter(mActivitySelf);
+
         return mDemoAdapter;
     }
 
@@ -62,8 +62,8 @@ public class MainActivity4 extends BaseRefreshActivity {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 70; i++) {
-            mEntity.add("xx1");
+        for (int i = 0; i < 5; i++) {
+            mEntity.add("xx" + i);
         }
         mDemoAdapter.setList(mEntity);
         mLoading.loadingFinish();
@@ -75,14 +75,16 @@ public class MainActivity4 extends BaseRefreshActivity {
                 mSmart.autoRefresh();
             }
         });
-        setOrientation(orientation_random, 3, StaggeredGridLayoutManager.VERTICAL);
+//        setOrientation(orientation_random, 3, StaggeredGridLayoutManager.VERTICAL);
+        setOrientation(orientation_vertical);
         mDemoAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int pos = (int) v.getTag();
-                mEntity.remove(pos);
-                mDemoAdapter.notifyItemRemoved(pos);
-                mSmart.autoRefresh();
+                Log.e("xx", "我要删除，点到了：" + pos + "个");
+                mDemoAdapter.remove(pos);
+//                mDemoAdapter.notifyItemChanged(pos);
+
             }
         });
         mRcy.setAdapter(mDemoAdapter);
@@ -97,17 +99,17 @@ public class MainActivity4 extends BaseRefreshActivity {
                 Toast.makeText(mActivitySelf, "left", Toast.LENGTH_SHORT).show();
             }
         });
-    setTitleRight(R.mipmap.ic_launcher, R.mipmap.ic_del, new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(mActivitySelf, "11111", Toast.LENGTH_SHORT).show();
-        }
-    }, new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(mActivitySelf, "22222:" + 22222, Toast.LENGTH_SHORT).show();
-        }
-    });
+        setTitleRight(R.mipmap.ic_launcher, R.mipmap.ic_del, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mActivitySelf, "11111", Toast.LENGTH_SHORT).show();
+            }
+        }, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mActivitySelf, "22222:" + 22222, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

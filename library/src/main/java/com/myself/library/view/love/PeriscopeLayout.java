@@ -27,7 +27,9 @@ import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -35,6 +37,7 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.myself.library.R;
 import com.myself.library.utils.DensityUtil;
@@ -99,7 +102,7 @@ public class PeriscopeLayout extends RelativeLayout {
         //底部 并且 水平居中
         lp = new LayoutParams(dWidth, dHeight);
 //       todo 底部居中
-        lp.addRule(CENTER_HORIZONTAL, TRUE);//这里的TRUE 要注意 不是true
+        lp.addRule(CENTER_HORIZONTAL, TRUE);
         lp.addRule(ALIGN_PARENT_BOTTOM, TRUE);
 
         // 初始化插补器
@@ -145,11 +148,33 @@ public class PeriscopeLayout extends RelativeLayout {
         ImageView imageView = new ImageView(getContext());
         //随机选一个
         imageView.setImageDrawable(drawables[random.nextInt(3)]);
-        LayoutParams mLayoutParams = (LayoutParams) v.getLayoutParams();
-        mLayoutParams.height=mLayoutParams.height- DensityUtil.dip2px(getContext(),v.getHeight());
+        ViewGroup.LayoutParams mLayoutParams = v.getLayoutParams();
+        mLayoutParams.height = mLayoutParams.height - DensityUtil.dip2px(getContext(), v.getHeight());
         imageView.setLayoutParams(mLayoutParams);
         addView(imageView);
         Animator set = getAnimator(imageView, v);
+        set.addListener(new AnimEndListener(imageView));
+        set.start();
+    }
+
+    /**
+     * 点击某个Item的时候，添加爱心
+     *
+     * @param v
+     */
+    public void addHeart(View v, RelativeLayout.LayoutParams mLp) {
+        ImageView imageView = new ImageView(getContext());
+        //随机选一个
+        imageView.setImageDrawable(drawables[random.nextInt(3)]);
+        Log.e("xx", "v.getLeft():" + v.getLeft() + ",,,v.getTop():" + v.getTop());
+        Log.e("xx", "v.getX():" + v.getX() + ",,,v.getY():" + v.getY());
+//        ViewGroup.LayoutParams mLayoutParams = v.getLayoutParams();
+//        mLayoutParams.height = mLayoutParams.height - DensityUtil.dip2px(getContext(), v.getHeight());
+        mLp.height = dHeight;
+        mLp.width = dWidth;
+        imageView.setLayoutParams(mLp);
+        addView(imageView);
+        Animator set = getAnimator(imageView, v, 10086);
         set.addListener(new AnimEndListener(imageView));
         set.start();
     }
@@ -159,10 +184,20 @@ public class PeriscopeLayout extends RelativeLayout {
      * @return
      */
     private Animator getAnimator(View target) {
+        return getAnimator(target, null, -1);
+    }
+
+    private Animator getAnimator(View target, View clickView, int pos) {
 //        set
         AnimatorSet set = getEnterAnimtor(target);
-
-        ValueAnimator bezierValueAnimator = getBezierValueAnimator(target);
+        ValueAnimator bezierValueAnimator;
+        if (clickView == null) {
+            bezierValueAnimator = getBezierValueAnimator(target);
+        } else if (clickView != null && pos < 0) {
+            bezierValueAnimator = getBezierValueAnimator(target, clickView);
+        } else {
+            bezierValueAnimator = getBezierValueAnimator(target, clickView, pos);
+        }
         AnimatorSet finalSet = new AnimatorSet();
         finalSet.playSequentially(set);
         finalSet.playSequentially(set, bezierValueAnimator);
@@ -172,16 +207,7 @@ public class PeriscopeLayout extends RelativeLayout {
     }
 
     private Animator getAnimator(View target, View clickView) {
-//        set
-        AnimatorSet set = getEnterAnimtor(target);
-
-        ValueAnimator bezierValueAnimator = getBezierValueAnimator(target, clickView);
-        AnimatorSet finalSet = new AnimatorSet();
-        finalSet.playSequentially(set);
-        finalSet.playSequentially(set, bezierValueAnimator);
-        finalSet.setInterpolator(interpolators[random.nextInt(4)]);
-        finalSet.setTarget(target);
-        return finalSet;
+        return getAnimator(target, clickView, -1);
     }
 
     private AnimatorSet getEnterAnimtor(final View target) {
@@ -217,11 +243,33 @@ public class PeriscopeLayout extends RelativeLayout {
      * @return
      */
     private ValueAnimator getBezierValueAnimator(View target, View clickView) {
-        //初始化一个贝塞尔计算器- - 传入
         BezierEvaluator evaluator = new BezierEvaluator(getPointF(2), getPointF(1));
-        //这里最好画个图 理解一下 传入了起点 和 终点
         float mX = clickView.getX();
         float mY = clickView.getY();
+        Log.e("xx", "这里画的坐标是:" + mX + "    " + mY);
+        Toast.makeText(getContext(), "这里画的坐标是:" + mX + "    " + mY, Toast.LENGTH_SHORT).show();
+        ValueAnimator animator = ValueAnimator.ofObject(evaluator, new PointF(mX, mY - dHeight), new PointF(random.nextInt(getWidth()), 0));
+        animator.addUpdateListener(new BezierListener(target));
+        animator.setTarget(target);
+        animator.setDuration(3000);
+        return animator;
+    }
+
+    /**
+     * 点击的Item引发的事件
+     *
+     * @param target
+     * @param clickView
+     * @return
+     */
+    private ValueAnimator getBezierValueAnimator(View target, View clickView, int pos) {
+        BezierEvaluator evaluator = new BezierEvaluator(getPointF(2), getPointF(1));
+        int[] ins = new int[2];
+        clickView.getLocationInWindow(ins);
+        float mX = ins[0];
+        float mY = ins[1];
+        Log.e("xx", "这里画的坐标是:" + mX + "    " + mY);
+        Toast.makeText(getContext(), "getLeft:" + mX + "    ,,getTop:" + mY, Toast.LENGTH_SHORT).show();
         ValueAnimator animator = ValueAnimator.ofObject(evaluator, new PointF(mX, mY - dHeight), new PointF(random.nextInt(getWidth()), 0));
         animator.addUpdateListener(new BezierListener(target));
         animator.setTarget(target);

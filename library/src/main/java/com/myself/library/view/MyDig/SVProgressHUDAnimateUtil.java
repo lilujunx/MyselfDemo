@@ -6,7 +6,7 @@ import com.myself.library.R;
 
 
 /**
- * Created by Sai on 15/8/16.
+ *
  */
 public class SVProgressHUDAnimateUtil {
     private static final int INVALID = -1;
