@@ -23,7 +23,31 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
     private Button mTvGood;
     private TextView mTv;
     private Context mContext;
-
+    private int i = 0;
+//    private Handler mHandler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what) {
+//                case 0:
+//                    if (i < 20) {
+//                        RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(0, 0);
+//                        mLayoutParams.leftMargin = mTvGood.getLeft();
+//                        mLayoutParams.topMargin = mTvGood.getTop();
+//                        Log.e("xx", "mTvGood.getLeft()：" + mTvGood.getLeft() + ",,,," + "mTvGood.getTop():" + mTvGood.getTop());
+//                        mPerLayout.addHeart(mTvGood, mLayoutParams);
+//                        sendEmptyMessageDelayed(0, 100);
+//                        i++;
+//                    } else {
+//                        sendEmptyMessage(1);
+//                    }
+//                    break;
+//                case 1:
+//                    i = 0;
+//                    break;
+//            }
+//        }
+//    };
 
     public DemoAdapter(Context mContext) {
         this.mContext = mContext;
@@ -67,7 +91,9 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
                 mLayoutParams.leftMargin = mTvGood.getLeft();
                 mLayoutParams.topMargin = mTvGood.getTop();
                 Log.e("xx", "mTvGood.getLeft()：" + mTvGood.getLeft() + ",,,," + "mTvGood.getTop():" + mTvGood.getTop());
-                mPerLayout.addHeart(v, mLayoutParams);
+                mPerLayout.addHeart(mTvGood, mLayoutParams);
+//                sendEmptyMessageDelayed(0, 100);
+//                mHandler.sendEmptyMessage(0);
 //                TextView tv = new TextView(mContext);
 //                tv.setText("hhhhhhh");
 //                tv.setBackgroundColor(Color.parseColor("#ff0000"));

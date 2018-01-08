@@ -49,6 +49,11 @@ public class EasyDividerItemDecoration extends RecyclerView.ItemDecoration {
     }
 
 
+    /**
+     * @param activity
+     * @param orientation   Rcy是纵向传horizontal
+     * @param drawableId
+     */
     public EasyDividerItemDecoration(Activity activity, int orientation, int drawableId) {
         this.setDivider(activity, drawableId);
         this.setOrientation(orientation);

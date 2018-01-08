@@ -28,8 +28,6 @@ import java.util.List;
 
 /**
  * Description：EasyRecyclerViewAdapter
- * Created by：CaMnter
- * Time：2015-10-21 16:21
  */
 public abstract class EasyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList mList;
@@ -74,7 +72,7 @@ public abstract class EasyRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         this.mList.clear();
         if (list == null) return;
         this.mList.addAll(list);
-
+        notifyDataSetChanged();
     }
 
 
@@ -89,10 +87,10 @@ public abstract class EasyRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
     public void remove(int pos) {
         this.mList.remove(pos);
-//        notifyDataSetChanged();
+        notifyDataSetChanged();
 //        notifyItemRangeChanged(pos,mList.size());
 //        notifyItemRemoved(pos);
-        notifyItemChanged(pos);
+//        notifyItemChanged(pos);
     }
 
 

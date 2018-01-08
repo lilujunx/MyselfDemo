@@ -1,6 +1,7 @@
 package com.jiayou.myselfdemo.ui.activity;
 
 import android.os.Handler;
+import android.support.v7.widget.DividerItemDecoration;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -27,7 +28,6 @@ public class MainActivity4 extends BaseRefreshActivity {
     @Override
     public EasyRecyclerViewAdapter initAdapter() {
         mDemoAdapter = new DemoAdapter(mActivitySelf);
-
         return mDemoAdapter;
     }
 
@@ -62,10 +62,12 @@ public class MainActivity4 extends BaseRefreshActivity {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             mEntity.add("xx" + i);
         }
         mDemoAdapter.setList(mEntity);
+//        mRcy.addItemDecoration(new EasyDividerItemDecoration(mActivitySelf,EasyDividerItemDecoration.VERTICAL_LIST,R.mipmap.ic_launcher));
+        mRcy.addItemDecoration(new DividerItemDecoration(mActivitySelf,DividerItemDecoration.VERTICAL));
         mLoading.loadingFinish();
         mLoading.setRetryListener(new View.OnClickListener() {
             @Override
@@ -87,7 +89,7 @@ public class MainActivity4 extends BaseRefreshActivity {
 
             }
         });
-        mRcy.setAdapter(mDemoAdapter);
+//        mRcy.setAdapter(mDemoAdapter);
     }
 
     @Override
@@ -107,7 +109,7 @@ public class MainActivity4 extends BaseRefreshActivity {
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mActivitySelf, "22222:" + 22222, Toast.LENGTH_SHORT).show();
+                goToActivity(LikeActivity.class);
             }
         });
 

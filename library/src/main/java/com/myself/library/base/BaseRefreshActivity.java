@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.myself.library.R;
 import com.myself.library.R2;
@@ -156,7 +157,12 @@ public abstract class BaseRefreshActivity extends BaseActivity implements OnRefr
         if (mEasyRecyclerViewAdapter == null) {
             mEasyRecyclerViewAdapter = initAdapter();
         }
-        mLoading.showLoading();
+        try {
+            mRcy.setAdapter(mEasyRecyclerViewAdapter);
+            mLoading.showLoading();
+        } catch (Exception e) {
+            Toast.makeText(mActivitySelf, R.string.no_adapter, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
