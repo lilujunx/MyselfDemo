@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jiayou.myselfdemo.R;
+import com.jiayou.myselfdemo.utils.TLog;
 import com.myself.library.adapter.EasyRecyclerViewAdapter;
 import com.myself.library.adapter.EasyRecyclerViewHolder;
 import com.myself.library.view.love.PeriscopeLayout;
@@ -24,30 +25,8 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
     private TextView mTv;
     private Context mContext;
     private int i = 0;
-//    private Handler mHandler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            switch (msg.what) {
-//                case 0:
-//                    if (i < 20) {
-//                        RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(0, 0);
-//                        mLayoutParams.leftMargin = mTvGood.getLeft();
-//                        mLayoutParams.topMargin = mTvGood.getTop();
-//                        Log.e("xx", "mTvGood.getLeft()：" + mTvGood.getLeft() + ",,,," + "mTvGood.getTop():" + mTvGood.getTop());
-//                        mPerLayout.addHeart(mTvGood, mLayoutParams);
-//                        sendEmptyMessageDelayed(0, 100);
-//                        i++;
-//                    } else {
-//                        sendEmptyMessage(1);
-//                    }
-//                    break;
-//                case 1:
-//                    i = 0;
-//                    break;
-//            }
-//        }
-//    };
+    private int mLeft;
+    private int mTop;
 
     public DemoAdapter(Context mContext) {
         this.mContext = mContext;
@@ -73,9 +52,24 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
         mTv = (TextView) viewHolder.findViewById(R.id.tv);
         mTvGood = (Button) viewHolder.findViewById(R.id.tv_good);
         mTvDel = (Button) viewHolder.findViewById(R.id.tv_del);
-        mTv.setText((String) getList().get(position));
-        mTvDel.setTag(position);
-        mTvGood.setTag(position);
+        viewHolder.itemView.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mLeft == 0) {
+                    mLeft = mTvGood.getLeft();
+                    Log.e("xx", "mLeft---->赋值" + mLeft);
+                }
+                if (mTop == 0) {
+                    mTop = mTvGood.getTop();
+                    Log.e("xx", "mTop---->赋值" + mTop);
+                }
+            }
+        });
+
+        mTv.setText((String) getList().get(viewHolder.getLayoutPosition()));
+        TLog.e("xx",(String) getList().get(viewHolder.getLayoutPosition()));
+        mTvDel.setTag(viewHolder.getLayoutPosition());
+        mTvGood.setTag(viewHolder.getLayoutPosition());
         mTvGood.setTag(R.id.id_viewHolder, viewHolder);
         if (mOnClickListener != null) {
             mTvDel.setOnClickListener(mOnClickListener);
@@ -86,10 +80,10 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
                 int i = (int) v.getTag();
                 EasyRecyclerViewHolder mTag = (EasyRecyclerViewHolder) v.getTag(R.id.id_viewHolder);
                 mPerLayout = (PeriscopeLayout) mTag.findViewById(R.id.perLayout);
-                Log.e("xx", "点到了：" + i + "个");
+
                 RelativeLayout.LayoutParams mLayoutParams = new RelativeLayout.LayoutParams(0, 0);
-                mLayoutParams.leftMargin = mTvGood.getLeft();
-                mLayoutParams.topMargin = mTvGood.getTop();
+                mLayoutParams.leftMargin = mLeft;
+                mLayoutParams.topMargin = mTop;
                 Log.e("xx", "mTvGood.getLeft()：" + mTvGood.getLeft() + ",,,," + "mTvGood.getTop():" + mTvGood.getTop());
                 mPerLayout.addHeart(mTvGood, mLayoutParams);
 //                sendEmptyMessageDelayed(0, 100);

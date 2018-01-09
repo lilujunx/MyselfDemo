@@ -2,13 +2,14 @@ package com.jiayou.myselfdemo.ui.activity;
 
 import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.jiayou.myselfdemo.R;
 import com.jiayou.myselfdemo.ui.adapter.DemoAdapter;
+import com.jiayou.myselfdemo.utils.NetUtil;
 import com.myself.library.adapter.EasyRecyclerViewAdapter;
+import com.myself.library.adapter.EasyRecyclerViewHolder;
 import com.myself.library.base.BaseRefreshActivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -56,7 +57,8 @@ public class MainActivity4 extends BaseRefreshActivity {
 
     @Override
     public void doLoadMore(RefreshLayout refreshlayout, EasyRecyclerViewAdapter mEasyRecyclerViewAdapter) {
-
+//        NetService mRetrofitCall = NetUtil.getRetrofitCall(NetService.class);
+        NetUtil.getInstance().doxxx("xx");
     }
 
 
@@ -67,7 +69,8 @@ public class MainActivity4 extends BaseRefreshActivity {
         }
         mDemoAdapter.setList(mEntity);
 //        mRcy.addItemDecoration(new EasyDividerItemDecoration(mActivitySelf,EasyDividerItemDecoration.VERTICAL_LIST,R.mipmap.ic_launcher));
-        mRcy.addItemDecoration(new DividerItemDecoration(mActivitySelf,DividerItemDecoration.VERTICAL));
+        mRcy.addItemDecoration(new DividerItemDecoration(mActivitySelf, DividerItemDecoration.VERTICAL));
+
         mLoading.loadingFinish();
         mLoading.setRetryListener(new View.OnClickListener() {
             @Override
@@ -79,12 +82,30 @@ public class MainActivity4 extends BaseRefreshActivity {
         });
 //        setOrientation(orientation_random, 3, StaggeredGridLayoutManager.VERTICAL);
         setOrientation(orientation_vertical);
+        mDemoAdapter.setOnItemClickListener(new EasyRecyclerViewHolder.OnItemClickListener() {
+            @Override
+            public void onItemClick(View convertView, int position) {
+                Toast.makeText(mActivitySelf, "这是第" + position + "个，是：" + mEntity.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+        mDemoAdapter.setOnItemLongClickListener(new EasyRecyclerViewHolder.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(View convertView, int position) {
+                Toast.makeText(mActivitySelf, "这是第" + position + "个，是：" + mEntity.get(position), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
         mDemoAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int pos = (int) v.getTag();
-                Log.e("xx", "我要删除，点到了：" + pos + "个");
-                mDemoAdapter.remove(pos);
+                Toast.makeText(mActivitySelf, "这是第" + pos + "个，是：" + mEntity.get(pos), Toast.LENGTH_SHORT).show();
+//                Log.e("xx", "我要删除，点到了：" + pos + "个");
+//                mDemoAdapter.remove(pos);
+                mEntity.remove(pos);
+//                Log.e("xx","剩下："+mEntity.toString());
+                mDemoAdapter.notifyItemRemoved(pos);
+//                mDemoAdapter.notifyItemRangeChanged(pos, mEntity.size());
 //                mDemoAdapter.notifyItemChanged(pos);
 
             }
