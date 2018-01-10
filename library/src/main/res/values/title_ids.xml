@@ -16,8 +16,6 @@
     <item name="ll_title_right_right" type="id"/>
 
 
-    <item name="content_main" type="id"/>
-
     <item name="imageRv_image" type="id"/>
     <item name="imageRv_cb" type="id"/>
 </resources>

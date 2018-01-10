@@ -38,6 +38,7 @@ public abstract class BaseActivity extends FragmentActivity {
     public BaseActivity mActivitySelf;
     public LayoutInflater mLayoutInflater;
     public FragmentManager mFragmentManager;
+
     public LinearLayout mLlTitleLeft, mLlTitleRight, mLlTitleRightRight;
     public TextView mTitleCenter;
     public Button mTitleLeft, mTitleRight, mTitleRightRight;
@@ -113,7 +114,6 @@ public abstract class BaseActivity extends FragmentActivity {
         return false;
     }
 
-    ;
 
 
     public void addTitleBar(Object rootLayout) {
@@ -263,7 +263,7 @@ public abstract class BaseActivity extends FragmentActivity {
                 mTitleRightRight.setClickable(false);
                 mLlTitleRightRight.setOnClickListener(onClickListener1);
             }
-        }else {
+        } else {
             mLlTitleRightRight.setVisibility(View.INVISIBLE);
         }
     }
@@ -351,6 +351,8 @@ public abstract class BaseActivity extends FragmentActivity {
 
 //        fragmentManager.findFragmentByTag()
     }
+
+
 
     public void removeFrag(BaseFragment fragment) {
 
