@@ -5,6 +5,9 @@ import android.widget.RelativeLayout;
 
 import com.jiayou.myselfdemo.R;
 import com.jiayou.myselfdemo.base.GBaseActivity;
+import com.jiayou.myselfdemo.ui.listener.NetService;
+import com.jiayou.myselfdemo.utils.NetUtil;
+import com.jiayou.myselfdemo.utils.TLog;
 import com.myself.library.view.love.PeriscopeLayout;
 
 import butterknife.BindView;
@@ -50,4 +53,22 @@ public class LikeActivity extends GBaseActivity {
     }
 
 
+    public void go1(View v){
+        NetService mInstance = NetUtil.getInstance();
+        TLog.error(mInstance.toString());
+    }
+
+    public void go2(View v){
+        NetService mInstance = NetUtil.getLongConnectionInstance();
+        TLog.error(mInstance.toString());
+    }
+
+    public void go3(View v){
+        NetService mInstance = NetUtil.getInstance();
+        TLog.error(mInstance.toString());
+    }
+
+    public void go4(View v){
+
+    }
 }

@@ -2,6 +2,7 @@ package com.myself.library.base;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +110,7 @@ public abstract class BaseMainActivity extends BaseActivity implements View.OnCl
                 mRadioButton.setMaxLines(1);
                 mRadioButton.setText(mStrs[i]);
                 mRadioButton.setButtonDrawable(null);
+                mRadioButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP,13);
                 mRadioButton.setBackgroundColor(getResources().getColor(R.color.white));
                 mRadioButton.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                 Drawable drawable = this.getResources().getDrawable(mDrs[i]);

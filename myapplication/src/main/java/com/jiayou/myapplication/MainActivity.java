@@ -5,7 +5,7 @@ import com.myself.library.base.BaseMainActivity;
 
 public class MainActivity extends BaseMainActivity {
     private String[] strs = new String[]{"首页", "呵呵呵", "呵呵呵呵1", "呵呵呵2", "个人中心"};
-    private int num = 4;
+    private int num = 5;
     private int[] bgs = new int[]{R.drawable.selector_label_icon1, R.drawable.selector_label_icon2, R.drawable.selector_label_icon3, R.drawable.selector_label_icon4, R.drawable.selector_label_icon5};
     private BlankFragment0 mBlankFragment0 = new BlankFragment0();
     private BlankFragment1 mBlankFragment1 = new BlankFragment1();

@@ -21,6 +21,9 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
     PeriscopeLayout mPerLayout;
     private Button mTvDel;
     private View.OnClickListener mOnClickListener;
+    public void setOnClickListener(View.OnClickListener mOnClickListener) {
+        this.mOnClickListener = mOnClickListener;
+    }
     private Button mTvGood;
     private TextView mTv;
     private Context mContext;
@@ -32,10 +35,7 @@ public class DemoAdapter extends EasyRecyclerViewAdapter {
         this.mContext = mContext;
     }
 
-    public DemoAdapter setOnClickListener(View.OnClickListener mOnClickListener) {
-        this.mOnClickListener = mOnClickListener;
-        return this;
-    }
+
 
     @Override
     public boolean needRoot() {

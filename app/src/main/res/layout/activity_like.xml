@@ -31,4 +31,40 @@
         android:text="aaaaaaaaaaaa"
         android:textColor="@color/white"/>
 
+     <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_alignParentBottom="true"
+             android:orientation="horizontal">
+
+             <Button
+                 android:layout_width="0dp"
+                 android:text="go1"
+                 android:onClick="go1"
+                 android:gravity="center"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"/>
+
+             <Button
+                 android:layout_width="0dp"
+                 android:text="go2"
+                 android:onClick="go2"
+                 android:gravity="center"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"/>
+         <Button
+             android:layout_width="0dp"
+             android:text="go3"
+             android:onClick="go3"
+             android:gravity="center"
+             android:layout_height="match_parent"
+             android:layout_weight="1"/>
+         <Button
+             android:layout_width="0dp"
+             android:text="go4"
+             android:onClick="go4"
+             android:gravity="center"
+             android:layout_height="match_parent"
+             android:layout_weight="1"/>
+         </LinearLayout>
 </com.myself.library.view.love.PeriscopeLayout>

@@ -16,16 +16,6 @@ import retrofit2.http.POST;
 
 public interface PrePayInfoService {
 
-
-//    @GET("xxxxxxxxxx")
-//    @Headers("Content-Type:application/json")
-//    Call<String> getPrePayInfo();
-//
-//
-//    @POST("xxxxxxxxxx")
-//    @Headers("Content-Type:application/json")
-//    Call<String> postPrePayInfo();
-
     @GET("tuserrepayment/userPayment")
     @Headers("Content-Type:application/json")
     Call<TempEntity> getPrePayInfo(@Header("token") String token);
