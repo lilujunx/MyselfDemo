@@ -14,9 +14,9 @@
         <item name="llLoadingResId">@layout/_loading_layout_loading</item>
         <item name="llErrorResId">@layout/_loading_layout_error</item>
         <item name="llTextColor">#e79191</item>
-        <item name="llTextSize">10sp</item>
+        <item name="llTextSize">13dp</item>
         <item name="llButtonTextColor">#41ded6</item>
-        <item name="llButtonTextSize">10sp</item>
+        <item name="llButtonTextSize">13dp</item>
         <item name="llButtonBackground">@drawable/_loading_layout_button</item>
         <item name="llEmptyImage">@drawable/empty</item>
         <item name="llEmptyText">一大波傻白正在靠近中</item>
